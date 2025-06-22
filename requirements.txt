@@ -1,0 +1,5 @@
+Pillow
+tkinter
+
+
+## key-----    v5M8xGh8wCXUt8h_V7LPz4b_VKw0EYz1s5_QCp1k91g=
