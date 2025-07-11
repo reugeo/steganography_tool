@@ -1,76 +1,116 @@
-#  Steganography Tool —  Message Hiding and Detection in Images
+# Steganography Tool — Message Hiding and Detection in Images
 
-##  Overview
-This project is an advanced **graphical steganography tool** that enables users to securely embed and detect **encrypted messages** inside image files using a powerful combination of **Least Significant Bit (LSB) manipulation** and **Fernet symmetric encryption**.
+## Overview
 
-Designed with **non-technical users in mind**, the tool features an intuitive **GUI built with PyQt5**, making it accessible while retaining robust security under the hood.
+This project is an advanced **graphical steganography tool** that empowers users to **securely embed and detect encrypted messages inside image files**, combining:
 
----
+* **Least Significant Bit (LSB) manipulation** for data hiding
+* **Fernet symmetric encryption (AES)** for confidentiality
 
-##  How It Works
-
-###  Embedding Process
-- User writes a secret message and provides an encryption key.
-- The message is **encrypted using Fernet** (symmetric AES).
-- Encrypted data is **converted to binary** and hidden in the **least significant bits** of the image pixels.
-- A **custom end-of-message binary delimiter** is added to detect message boundaries.
-
-###  Detection Process
-- The tool scans the image for the **binary delimiter**.
-- If found, it extracts the binary data, converts it back to text, and decrypts it using the user-provided key.
-- If no key is provided or it's incorrect, the tool **notifies the user** of the presence of a hidden message.
-
-###  Graphical Interface (GUI)
-Built with **PyQt5**, the GUI allows:
-- Image selection for embedding or detection
-- Message and key entry
-- Easy saving of output images
-- Real-time status updates
+Designed for **non-technical users**, the tool provides an intuitive **PyQt5 graphical interface**, making strong security accessible without requiring programming knowledge.
 
 ---
 
-##  Unique Use Cases
-| Scenario | Description |
-|---------|-------------|
-|  Artistic Secret Sharing | Embed hidden stories or provenance in digital artworks |
-|  Personalized Gifts | Send photos with embedded private notes for birthdays, anniversaries |
-|  Secure Education | Distribute image-based clues, accessible only with the correct key |
-|  Geo-Caching | Hide treasure hunt clues in images |
-|  Medical Imaging | Embed encrypted patient info directly into X-ray or scan files |
+## How It Works
+
+### Embedding Process
+
+1. The user inputs a **secret message** and an **encryption key**.
+2. The message is **encrypted using Fernet** (AES symmetric encryption).
+3. Encrypted data is **converted to binary**.
+4. Binary bits are embedded in the **least significant bits** of the image pixels.
+5. A **custom end-of-message binary delimiter** is appended to mark where the hidden message ends.
+
+---
+
+### Detection Process
+
+1. The tool scans the image for the **delimiter**.
+2. If a message is detected:
+
+   * Binary data is extracted and reassembled.
+   * Data is decrypted with the provided key.
+   * If the key is missing or incorrect, the user is alerted that hidden data was found but cannot be read.
+
+---
+
+### Graphical Interface
+
+Built with **PyQt5**, the user interface offers:
+
+* Simple selection of input and output images
+* Fields for entering messages and encryption keys
+* Real-time status updates during embedding and detection
+* Clear error handling and user guidance
+
+---
+
+## Unique Use Cases
+
+| Scenario                       | Description                                                         |
+| ------------------------------ | ------------------------------------------------------------------- |
+| **Artistic Secret Sharing**    | Embed hidden stories or ownership details in digital art            |
+| **Personalized Digital Gifts** | Send photos with private notes for birthdays or anniversaries       |
+| **Secure Education**           | Distribute image-based clues accessible only to authorized students |
+| **Geo-Caching**                | Hide treasure hunt instructions in images                           |
+| **Medical Imaging**            | Embed encrypted patient data into X-rays or scan files              |
 
 ---
 
 ## Advantages
--  **Double Layer Security**: Combines encryption and steganography
--  **User-Friendly GUI**: No coding or terminal required
--  **Supports PNG, JPG, BMP**
--  **Instant Feedback**: Clear user alerts and decryption guidance
--  **Custom Delimiter**: Unique marker (`1111111111111110`) minimizes false reads
+
+* **Double Layer Security:** Combines steganography and encryption for enhanced confidentiality.
+* **User-Friendly GUI:** No command-line knowledge required.
+* **Multi-Format Support:** Works with PNG, JPG, BMP.
+* **Custom Delimiter:** Unique binary marker (`1111111111111110`) reduces accidental detection.
+* **Immediate Feedback:** Clear alerts when messages are detected or decryption fails.
 
 ---
 
 ## Limitations
--  **Message Size is Limited** by image resolution and format
--  **Lost Keys = Lost Messages**
--  **Image Quality Slightly Alters**, especially for small or compressed images
--  **One Message per Image** due to single delimiter usage
--  **Undetectable by Common Tools**, which is good for secrecy but bad for discovery
+
+* **Message Size Limited:** Embedding capacity depends on image resolution.
+* **Lost Keys = Lost Messages:** Encryption requires the correct key to recover data.
+* **Minor Image Alteration:** LSB changes may slightly affect image quality.
+* **One Message per Image:** Single delimiter limits embedding to one payload.
+* **Undetectable by Common Tools:** Hidden data is not easily discoverable by standard steganalysis (can be a benefit or a drawback).
 
 ---
 
 ## Real-Life Applications
--  **Private Communication** via social media or email
--  **Digital Watermarking** without visible overlay
--  **Forensics & Legal Chain-of-Custody** data embedding
--  **Corporate Security** to detect unauthorized data leaks
--  **Museum Archiving** metadata embedded in digital exhibits
+
+* **Private Communication:** Share confidential information via email or social media images.
+* **Digital Watermarking:** Prove ownership without visible overlays.
+* **Forensics & Legal:** Embed chain-of-custody metadata in evidence photos.
+* **Corporate Security:** Detect unauthorized data exfiltration in images.
+* **Museum & Archive:** Embed provenance or catalog metadata in digital reproductions.
 
 ---
 
-##  Getting Started
+## Getting Started
+
+### Installation
+
+First, install the required Python packages:
+
+```sh
+pip install -r requirements.txt
+```
+
+---
 
 ### Launch the Tool
 
--pip install -r requirements.txt
+Run the GUI application:
 
--python gui.py
+```sh
+python gui.py
+```
+
+The graphical interface will open, ready for embedding and detection.
+
+---
+
+## Authors
+
+* REUBEN GEORGE
